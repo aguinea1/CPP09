@@ -8,9 +8,13 @@
 class BitcoinExchange {
 private:
     std::map<std::string, double> _db; // date -> exchange rate
+
     bool isValidDate(const std::string& date) const;
     bool isValidValue(const std::string& valueStr, double& value) const;
     std::string trim(const std::string& s) const;
+
+    // Función auxiliar para buscar la tasa más cercana
+    std::map<std::string, double>::const_iterator findRateForDate(const std::string& date) const;
 
 public:
     BitcoinExchange();
@@ -23,3 +27,4 @@ public:
 };
 
 #endif
+
